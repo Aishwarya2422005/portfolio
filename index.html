@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aishwarya S - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #F8FAFC;
+        }
+        
+        .navbar {
+            background: rgba(15, 23, 42, 0.8) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #F8FAFC;
+            font-weight: 700;
+        }
+        
+        .logo {
+            width: 32px;
+            height: 32px;
+            background: #7C3AED;
+            border-radius: 50%;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #94A3B8;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #1E293B;
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: 100%;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid #1E293B;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            font-size: 0.9rem;
+            color: white;
+        }
+        
+        .github-button {
+            background: #7C3AED;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .github-button:hover {
+            background: #6D28D9;
+            color: white;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid #7C3AED;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .experience-card, .education-card {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .experience-card::before, .education-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #7C3AED;
+        }
+        
+        .project-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #1E293B;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-card .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+        }
+        
+        .tech-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            margin: 0.25rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background: #7C3AED;
+            color: white;
+        }
+        
+        .filter-button {
+            background: transparent;
+            border: 1px solid #7C3AED;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            margin: 0 0.5rem 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-button.active, .filter-button:hover {
+            background: #7C3AED;
+        }
+        
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .certification-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #1E293B;
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certification-card h4 {
+            color:whitesmoke;
+            margin-bottom: 0.5rem;
+        }
+        
+        .certification-card p {
+            color: #94A3B8;
+            font-size: 0.9rem;
+        }
+        
+        .contact-form input, .contact-form textarea {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid #1E293B;
+            color: white;
+            padding: 0.75rem;
+            width: 100%;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+        
+        .send-button {
+            background: #7C3AED;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .send-button:hover {
+            background: #6D28D9;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="logo"></div>
+                Aishwarya S
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item">
+                        <a class="github-button" href="https://github.com/Aishwarya2422005" target="_blank">
+                            <i class="fab fa-github me-2"></i>GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" style="margin-top: 60px;">
+        <div class="container">
+            <div class="card">
+                <div class="about-content">
+                    <div class="text-center">
+                        <img src="C:\Users\bhara\Music\ef6f59e5-73ea-40f9-9480-0fea8dfcebcf.jpg" alt="Aishwarya S" class="profile-img">
+                    </div>
+                    <div>
+                        <h1 class="display-4 fw-bold">Hi, I'm Aishwarya S</h1>
+                        <h2 class="h3" style="color: #7C3AED;">Data Scientist | AI Enthusiast</h2>
+                        <p class="lead" style="color: white;">A passionate data science and AI student with a strong foundation in machine learning, statistics, and programming. Eager to contribute innovative solutions and bring data-driven ideas to life.</p>
+                        <div class="mt-3">
+                            <a href="mailto:s.aishwarya2412@gmail.com" class="btn btn-outline-light me-2">
+                                <i class="fas fa-envelope me-2"></i>Email
+                            </a>
+                            <a href="https://drive.google.com/file/d/1Do7o5XmFn5YnnuZIpSCi-6IGKAwc-aE8/view?usp=sharing" class="btn btn-outline-light me-2" target="_blank">
+                                <i class="fas fa-file-alt me-2"></i>Resume
+                            </a>
+                            <a href="https://www.linkedin.com/in/aishwarya-s-b99b90268/" class="btn btn-outline-light me-2" target="_blank">
+                                <i class="fab fa-linkedin me-2"></i>LinkedIn
+                            </a>
+                            <a href="https://www.geeksforgeeks.org/user/user_61v752y71mk/" class="btn btn-outline-light" target="_blank">
+                                <i class="fas fa-code me-2"></i>GeeksForGeeks
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <p class="section-subtitle">Here are some of my technical skills and tools I work with.</p>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <h3>Technical Skills</h3>
+                        <div>
+                            <span class="skill-badge">SQL (ORACLE)</span>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Data Science</span>
+                            <span class="skill-badge">Machine Learning</span>
+                            <span class="skill-badge">Deep Learning</span>
+                            <span class="skill-badge">NLP</span>
+                            <span class="skill-badge">PowerBI</span>
+                            <span class="skill-badge">Statistics</span>
+                            <span class="skill-badge">EDA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <h3>Tools & Libraries</h3>
+                        <div>
+                            <span class="skill-badge">Pandas</span>
+                            <span class="skill-badge">NumPy</span>
+                            <span class="skill-badge">SciPy</span>
+                            <span class="skill-badge">Matplotlib</span>
+                            <span class="skill-badge">Scikit-learn</span>
+                            <span class="skill-badge">Streamlit</span>
+                            <span class="skill-badge">GitHub</span>
+                            <span class="skill-badge">Excel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Internships</h2>
+            <p class="section-subtitle">My journey in Data Science and AI</p>
+            
+            <div class="experience-card card">
+                <h3>Data Visualisation</h3>
+                <p class="experience-company">INFOSYS SPRINBOARD INTERNSHIP</p>
+                <p>Working on the "Air Quality Insights Visualization" project, developing an interactive Power BI dashboard integrated into a Streamlit web app for analyzing AQI trends and regional disparities.</p>
+            </div>
+            
+            <div class="experience-card card">
+                <h3>Data Analysis</h3>
+                <p class="experience-company">Tata Group Data Visualisation: Empowering Business with Effective Insights</p>
+                <p>Completed a simulation at Tata Consultancy, creating data visualizations to support effective decision-making. Prepared questions for a meeting with senior leadership and developed visuals to aid executives in data analysis.</p>
+            </div>
+            
+            <div class="experience-card card">
+                <h3>Freelance AI & ML Article Writer</h3>
+                <p class="experience-company">GeeksforGeeks</p>
+                <ul>
+                    <li>Selected as a freelancer to contribute articles on AI, Machine Learning and related technology</li>
+                    <li>Authored five articles, enhancing the community's understanding of AI and ML concepts</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">I have worked on a wide range of projects. Here are some of my notable ones.</p>
+            
+            <div class="text-center mb-4">
+                <button class="filter-button active">All</button>
+                <button class="filter-button">AI/ML</button>
+                <button class="filter-button">Data Analysis</button>
+                <button class="filter-button">Web Development</button>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <!-- Project 1 -->
+                <div class="col">
+                    <div class="project-card">
+                        <img src="C:\Users\bhara\OneDrive\Pictures\Screenshots\Screenshot_20250413_101117.png" alt="Urban Gardening Project">
+                        <div class="card-body">
+                            <p class="text-muted mb-1">JULY 2024</p>
+                            <h3>Enhancing Urban Gardening</h3>
+                            <p>Developed a geospatial-based machine learning model for sustainable urban gardening recommendations.</p>
+                            <div class="mt-auto">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Geospatial</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="col">
+                    <div class="project-card">
+                        <img src="C:\Users\bhara\OneDrive\Pictures\Screenshots\Screenshot_20250413_101324.png" alt="Medicine Recommendation System">
+                        <div class="card-body">
+                            <p class="text-muted mb-1">MARCH 2024</p>
+                            <h3>Medicine Recommendation System</h3>
+                            <p>AI-driven system for personalized health recommendations based on reported symptoms.</p>
+                            <div class="mt-auto">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">SVC Model</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="col">
+                    <div class="project-card">
+                        <img src="C:\Users\bhara\OneDrive\Pictures\Screenshots\Screenshot_20250413_101425.png" alt="Sales Analysis Dashboard">
+                        <div class="card-body">
+                            <p class="text-muted mb-1">December 2023</p>
+                            <h3>Customer Sales Analysis</h3>
+                            <p>Python dashboard for comprehensive regional sales comparison and insights.</p>
+                            <div class="mt-auto">
+                                <span class="tech-tag">Streamlit</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">NumPy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="col">
+                    <div class="project-card">
+                        <img src="C:\Users\bhara\OneDrive\Pictures\Screenshots\Screenshot_20250413_101536.png" alt="Amazon Product Recommendation">
+                        <div class="card-body">
+                            <p class="text-muted mb-1">AUGUST 2023</p>
+                            <h3>Amazon Product Recommendation</h3>
+                            <p>Search Engine & Product Recommendation System using NLP techniques.</p>
+                            <div class="mt-auto">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Streamlit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="col">
+                    <div class="project-card">
+                        <img src="C:\Users\bhara\OneDrive\Pictures\Screenshots\Screenshot_20250413_101630.png" alt="Plant Disease Prediction">
+                        <div class="card-body">
+                            <p class="text-muted mb-1">May 2024</p>
+                            <h3>Plant Leaf Disease Prediction</h3>
+                            <p>Implemented transfer learning with CNNs for plant disease detection.</p>
+                            <div class="mt-auto">
+                                <span class="tech-tag">Deep Learning</span>
+                                <span class="tech-tag">CNN</span>
+                                <span class="tech-tag">Transfer Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="col">
+                    <div class="project-card">
+                        <img src="C:\Users\bhara\OneDrive\Pictures\Screenshots\Screenshot_20250413_101714.png" alt="E-commerce Platform">
+                        <div class="card-body">
+                            <p class="text-muted mb-1">2023</p>
+                            <h3>Online Shopping System</h3>
+                            <p>E-commerce platform using JDBC for database connectivity and user authentication.</p>
+                            <div class="mt-auto">
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">JDBC</span>
+                                <span class="tech-tag">SQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <p class="section-subtitle">Continuous learning and skill development</p>
+            
+            <div class="certification-grid">
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/IBM Data Analysis.jpg')">
+                    <h4>Data Analysis with Python</h4>
+                    <p class="grade" style="color: gold;">IBM COURSERA</p>
+                </div>
+
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/google capstone_page-0001.jpg')">
+                    <h4>Google Data Analytics Capstone</h4>
+                    <p class="grade" style="color: gold;">GOOGLE COURSERA</p> 
+                </div>
+                
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/Technical English For Engineers_page-0001.jpg')">
+                    <h4>Technical English for Engineers</h4>
+                    <p class="grade" style="color: gold;">NPTEL - TOP 5%</p>
+                </div>
+                
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/Cloud Computing_page-0001.jpg')">
+                    <h4>Cloud Computing</h4>
+                    <p class="grade" style="color: gold;">NPTEL - ELITE+SILVER</p>
+                </div>
+                
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/Natural Language Processing_page-0001.jpg')">
+                    <h4>Natural Language Processing</h4>
+                    <p class="grade" style="color: gold;">NPTEL</p>
+                </div>
+                
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/google capstone_page-0001.jpg')">
+                    <h4>Database Management System</h4>
+                    <p class="grade" style="color: gold;">INFOSYS SPRINGBOARD</p>
+                </div>
+
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/1-d73deab1-952a-4b94-a388-60eaa0feca64 (1)_page-0001.jpg')">
+                    <h4>Power BI for Business Professionals(</h4>
+                    <p class="grade" style="color: gold;">INFOSYS SPRINGBOARD</p>
+                </div>
+                
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/GuviCertification - 98Lh17D639fyT81929.png')">
+                    <h4>Python</h4>
+                    <p class="grade" style="color: gold;">GUVI</p>
+                </div>
+                
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/Data Science For Engineers_page-0001.jpg')">
+                    <h4>Data Science for Engineers</h4>
+                    <p class="grade" style="color: gold;">NPTEL</p>
+                </div>
+                
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/Fundamentals of ML Microsoft.png')">
+                    <h4>Machine Learning Fundamentals</h4>
+                    <p class="grade" style="color: gold;">MICROSOFT</p>
+                </div>
+                
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/google capstone_page-0001.jpg')">
+                    <h4>AI FOR INDIA 2.0</h4>
+                    <p class="grade" style="color: gold;">GUVI</p>
+                </div>
+
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/google capstone_page-0001.jpg')">
+                    <h4>Google Analytics for Beginners</h4>
+                    <p class="grade" style="color: gold;">GOOGLE ANALYTICS ACADEMY</p>
+                </div>
+                <div class="certification-card" onclick="showCertificate('C:/Users/bhara/OneDrive/Documents/My certificates/Associate Data analyst Datacamp.jpg')">
+                    <h4>Associate Data Analyst</h4>
+                    <p class="grade" style="color: gold;">DATACAMP</p>
+                </div>
+        </div>  
+    </section>
+
+    <!-- Modal for Showing Certificate Image -->
+<div class="modal fade" id="certificateModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Certificate</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img id="certificateImage" src="" alt="Certificate" style="width: 100%;">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+      // Function to show the certificate modal with the correct image
+      function showCertificate(imageSrc) {
+          document.getElementById('certificateImage').src = imageSrc;
+          var myModal = new bootstrap.Modal(document.getElementById('certificateModal'));
+          myModal.show();
+      }
+  </script>
+
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">My academic journey</p>
+            
+            <div class="education-card card">
+                <h3>National Engineering College - Kovilpatti</h3>
+                <p>Bachelor of Technology (Artificial Intelligence and Data Science)</p>
+                <p class="grade" style="color: gold;">CGPA: 8.12 / 10.0</p>
+                <p>2022-2026</p>
+                <p>Majors: Data Science, Machine Learning, Artificial Intelligence</p>
+            </div>
+            
+            <div class="education-card card">
+                <h3>ST.PAUL'S.MATRIC.HR.SEC.SCHOOL, KOVILPATTI</h3>
+                <p style="color: gold;">HSC: 87%</p>
+                <p style="color: gold;">SSLC: 90%</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container text-center">
+            <h3>Aishwarya S</h3>
+            <div class="mt-3">
+                <a href="#about" class="text-light me-3">About</a>
+                <a href="#skills" class="text-light me-3">Skills</a>
+                <a href="#experience" class="text-light me-3">Experience</a>
+                <a href="#projects" class="text-light me-3">Projects</a>
+                <a href="#certifications" class="text-light me-3">Certifications</a>
+                <a href="#education" class="text-light">Education</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
